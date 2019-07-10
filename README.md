@@ -79,3 +79,15 @@ list(map(int, input().strip().split()))[:I]
 takes the list we have obtained and returns only the first I elements.
 
 Neat. Right?
+
+
+2 explain
+input() waits for the user to type something, and returns it as a string.
+strip() removes whitespace and newlines from the ends of that string and returns the result. 
+split() splits that string into a list of parts. If you don't give any arguments, it splits on any whitespace. 
+map() takes two arguments: A function and a list. In this case the function is int, and the list is the one from above. It executes the function once on each thing in the list, and returns the result. In this casse the function is int, which converts its argument to an integer (a whole number).
+list() converts its argument to a list. 
+This is to work around a difference between python 2 and 3: In 2, map returns a list (so converting it to a list is redundant but harmless). In 3, map returns an iterator: An object you can repeatedly asked for its next value. (It saves memory by only running the function on the next thing in its input when asked for the result.) Converting it to a list forces it to run through everything immediately. 
+[:I] returns the first I elements of a list, assuming that I contains a number.
+
+So. It reads a line from the keyboard, trims away whitespace at the ends, splits it on whitespace, runs int() on each part (to convert it from a string to a number), forces it to be a list to work around a 2/3 difference, and only keeps the I first numbers. In short, it reads a list of at most I numbers from the keyboard.
