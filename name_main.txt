@@ -1,0 +1,65 @@
+Every module in python has a special attribute called __name__ . The value of __name__  attribute is set to '<strong>main</strong>'  when module run as main program. Otherwise the value of __name__  is set to contain the name of the module.
+
+Consider the following code for better understanding.
+
+# file my_module.py
+
+foo = 100
+
+def hello():
+    print("i am from my_module.py")
+
+if __name__ == "__main__":
+    print("Executing as main program")
+    print("Value of __name__ is: ", __name__)
+    hello()
+
+# file my_module.py
+ 
+foo = 100
+ 
+def hello():
+    print("i am from my_module.py")
+ 
+if __name__ == "__main__":
+    print("Executing as main program")
+    print("Value of __name__ is: ", __name__)
+    hello()
+Here we have defined a new module my_module . We can execute this module as main program by entering the following code
+
+python my_module.py
+python my_module.py
+Expected Output:
+
+Executing as main program
+Value of __name__ is: __main__
+i am from my_module.py
+
+Executing as main program
+Value of __name__ is: __main__
+i am from my_module.py
+here we are creating a new module and executing it as main program so the value of __name__ is set to '<strong>main</strong>' . As a result if condition satisfies and hello()  function gets called.
+Now create a new file called module.py  and write the following code
+
+import my_module
+
+print(my_module.foo)
+my_module.hello()
+
+print(my_module.__name__)
+
+import my_module
+ 
+print(my_module.foo)
+my_module.hello()
+ 
+print(my_module.__name__)
+Expected Output:
+
+100
+i am from my_module.py
+my_module
+
+100
+i am from my_module.py
+my_module
